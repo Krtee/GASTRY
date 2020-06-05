@@ -13,6 +13,9 @@ const Navigation = () => {
                 <LinkContainer className={'navItem'} to="/home">
                     <NavItem>Home</NavItem>
                 </LinkContainer>
+                <LinkContainer className={'navItem'} to="/catalog">
+                    <NavItem>Catalog</NavItem>
+                </LinkContainer>
                 <LinkContainer className={'navItem'} to="/search">
                     <NavItem>Search</NavItem>
                 </LinkContainer><LinkContainer className={'navItem'} to="/profile">

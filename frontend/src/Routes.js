@@ -8,6 +8,7 @@ import Profilepage from "./containers/profile/Profilepage";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {connect} from "react-redux";
 import Signup from "./containers/register/Signup";
+import Catalog from "./containers/catalog/Catalog";
 
 
 class Routes extends Component {
@@ -32,6 +33,8 @@ class Routes extends Component {
         if ( prevProps.token !== this.props.token && this.props.token !== null){
             this.props.history.replace("/home");
         }
+
+
     }
 
     //TODO : ask for authtoken and redirect to login if necessary
@@ -44,6 +47,7 @@ class Routes extends Component {
             privateRoutes.push(<Route exact path={"/home"} component={Home}></Route>)
             privateRoutes.push(<Route exact path={"/search"} component={Search}></Route>)
             privateRoutes.push(<Route exact path={"/profile"} component={Profilepage}></Route>)
+            privateRoutes.push(<Route exact path={"/catalog"} component={Catalog}></Route>)
 
         }
         return (

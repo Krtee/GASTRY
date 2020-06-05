@@ -28,7 +28,14 @@ const signInState = {
  class Login extends Component {
     state = signInState;
 
+    componentDidMount() {
+        if (this.props.token !== null) {
+            this.props.history.push("/home");
+        }
+    }
+
      componentDidUpdate(prevProps, prevState, snapshot) {
+
          if (this.props.token !== null) {
              this.props.history.push("/home");
          }
