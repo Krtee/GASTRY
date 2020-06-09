@@ -5,6 +5,7 @@ import * as actions from "../../redux/actions";
 
 class Catalog extends Component {
 
+
     componentDidMount() {
         console.log("I mounted ");
         if (this.props.items.length <= 0){
