@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Routes from "./Routes";
+import Routes from "./routes";
 import {Provider} from "react-redux";
 import {store, persistor} from "./redux/store";
 import {BrowserRouter} from "react-router-dom";
