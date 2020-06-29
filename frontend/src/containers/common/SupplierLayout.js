@@ -10,9 +10,7 @@ const SupplierLayout = ({
                             description = 'Description',
                             className,
                             children,
-                            onClicklogout,
-                            basketPathname = "",
-                            basketState= ""
+                            onClicklogout
                         }) => {
 
     const navbuttons = [
@@ -28,7 +26,7 @@ const SupplierLayout = ({
     ]
     return (
         <div>
-            <Topbar onClick={onClicklogout} pathname={basketPathname} state={basketState}/>
+            <Topbar onClick={onClicklogout}/>
             <Navigation pagelist={navbuttons}></Navigation>
             <div className='jumbotron'>
                 <h2> {title} </h2>
