@@ -4,5 +4,30 @@ button.btn{
 
 
 .Containerli {
-  margin: 40px 0px 40px 0px;
+  margin-bottom: 7rem;
+}
+
+footer.messageInput{
+  margin-bottom: 4rem;
+  div.container{
+    background-color: #FEECAD;
+    max-height: 6rem;
+
+    form{
+      background-color: white;
+      border-radius: 0.8rem;
+      border: solid 1px;
+      -webkit-box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+      -moz-box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+      box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+      input{
+        max-height: 3rem;
+        border-style: none;
+      }
+
+      button{
+        width: 100%;
+      }
+    }
+  }
 }

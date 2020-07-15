@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import {Summary} from '../../../components/basket/Summary'
 import EstimatedTotal from "../../../components/basket/EstimatedTotal";
 import CustomerLayout from "../../customer/CustomerLayout";
+import Button from "../../../components/button/Button";
 
 export class Basket extends Component {
     state={
@@ -59,16 +60,15 @@ export class Basket extends Component {
             <CustomerLayout title="Basket"
                             location={"home"}
                             showBack={true}
+                            description={"Mein Warenkorb"}
             >
-            <div className="purchase-card">
                 <Container >
                     {basketItems}
                     <EstimatedTotal total={this.state.total}/>
                     {
-                        this.state.total > 0 ? <button onClick={this.placeOrder}>Place order</button> : <p>Consider adding some items to your basket first</p>
+                        this.state.total > 0 ? <Button className={"submit-btn"}onClick={this.placeOrder} label={"Bestellung abschließen"}/> : <p>Consider adding some items to your basket first</p>
                     }
                 </Container>
-            </div>
             </CustomerLayout>
 
 

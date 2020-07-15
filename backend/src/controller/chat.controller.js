@@ -14,11 +14,13 @@ class ChatController {
             const message = req.body.message;
             const chatId = req.params._chatId;
 
-            console.log(chatId)
+            var date = new Date();
+            console.log(date.toLocaleString())
 
             const newMessage = {
                 message: message,
-                user: userId
+                user: userId,
+                date: date
             }
 
 
@@ -34,7 +36,6 @@ class ChatController {
 
 
             await resultChat.save();
-            console.log("hoi ")
 
             return res.status(200).send({
                 message: "Successfully added message"

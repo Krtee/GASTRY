@@ -19,8 +19,8 @@ const UserInfo = (props) => {
                     : null
                 }
             </ul>
-            <Button className="button yellow-btn" onClick={onEdit} label="Edit Profile"/>
-            <Button className="button red-btn logout-button" onClick={onLogout} label="Logout"/>
+            <Button className="yellow-btn" onClick={onEdit} label="Edit Profile"/>
+            <Button className="red-btn logout-button" onClick={onLogout} label="Logout"/>
         </div>
     );
 };

@@ -13,8 +13,12 @@ import axiosInstance from "../../../redux/axiosInstance";
 import io from "socket.io-client";
 import {connect} from "react-redux";
 import * as actions from '../../../redux/actions';
+import CustomerLayout from "../CustomerLayout";
+import sendbutton from "../../../assets/icons/send.svg"
+
 let socket;
 let messagesEnd;
+
 class Chat extends Component {
 
     state = {
@@ -56,8 +60,6 @@ class Chat extends Component {
         this.fetchChat();
 
         this.scrollToBottom();
-
-
 
 
     }
@@ -121,17 +123,17 @@ class Chat extends Component {
 
             newSocket.on("newMessage", data => {
                 console.log("IM A NEW MESSAGE");
-              const newMessage = data.newMessage;
-              const messages = [...this.state.messages];
-              console.log("HOI ON NEW FRONT")
-              console.log(newMessage.message);
-              console.log(newMessage.dateNow);
-              messages.push(newMessage);
-              this.setState({
-                  ...this.state,
-                  messages: messages,
-                  pendingMessage: ""
-              })
+                const newMessage = data.newMessage;
+                const messages = [...this.state.messages];
+                console.log("HOI ON NEW FRONT")
+                console.log(newMessage.message);
+                console.log(newMessage.dateNow);
+                messages.push(newMessage);
+                this.setState({
+                    ...this.state,
+                    messages: messages,
+                    pendingMessage: ""
+                })
             });
 
             socket = newSocket;
@@ -150,42 +152,38 @@ class Chat extends Component {
     validateForm = (err) => {
         let valid = true;
         console.log(err)
-        if(err.length > 0) {
+        if (err.length > 0) {
             return valid = false
-        }
-        else {
+        } else {
             return valid = true
         }
     };
 
     validationHandler = (message) => {
-       if(message.length === 0) {
-           this.setState({
-               ...this.setState({
-                   ...this.state,
-                   pendingMessage: message,
-                   typeError: "Message must not be empty"
-               })
-           })
-       }
-       else {
-           this.setState({
-               ...this.setState({
-                   ...this.state,
-                   pendingMessage: message,
-                   typeError: ""
-               })
-           })
-       }
-
-
+        if (message.length === 0) {
+            this.setState({
+                ...this.setState({
+                    ...this.state,
+                    pendingMessage: message,
+                    typeError: "Message must not be empty"
+                })
+            })
+        } else {
+            this.setState({
+                ...this.setState({
+                    ...this.state,
+                    pendingMessage: message,
+                    typeError: ""
+                })
+            })
+        }
 
 
     };
 
     submitMessage = (event) => {
         event.preventDefault()
-        if(this.validateForm(this.state.typeError)) {
+        if (this.validateForm(this.state.typeError)) {
             console.log(this.state.pendingMessage);
             const token = this.props.token;
             const message = this.state.pendingMessage;
@@ -199,8 +197,7 @@ class Chat extends Component {
 
             });
             this.newMessage(message)
-        }
-        else {
+        } else {
             console.log(this.state.typeError)
 
         }
@@ -212,10 +209,11 @@ class Chat extends Component {
         const messages = [...this.state.messages];
         const userId = this.state.userId;
         const messageUIElements = messages.map(message => {
-            if(message.user === userId) {
-                return <OwnChatMessage text={message.message} date={message.date}/>
-            }
-            else return <OtherChatMessage text={message.message} date={message.date}/>
+            const date = new Date(message.date)
+            date.toUTCString()
+            if (message.user === userId) {
+                return <OwnChatMessage text={message.message} date={date.toString()}/>
+            } else return <OtherChatMessage text={message.message} date={date.toString()}/>
 
 
         })
@@ -223,37 +221,47 @@ class Chat extends Component {
     };
 
     scrollToBottom = () => {
-        messagesEnd.scrollIntoView({ behavior: "smooth" });
+        messagesEnd.scrollIntoView({behavior: "smooth"});
     };
-
-
 
 
     render() {
         return (
-            <>
-                <Topbar/>
+            <CustomerLayout
+                location={"orders"}
+                showBack={true}
+            >
                 <Container className="Containerli">
                     {this.renderMessages()}
-                    <div ref={(el) => {messagesEnd = el}}/>
+                    <div ref={(el) => {
+                        messagesEnd = el
+                    }}/>
                 </Container>
-                <Navbar expand={"*"} fixed={"bottom"}>
+                <footer className={"messageInput fixed-bottom"}>
                     <Container>
-                        <Form style={{width: "100%"}}>
+                        <Form >
                             <Row>
-                                <Col xs={9}>
-                                    <Form.Control value={this.state.pendingMessage} onChange={(e) => this.onChangeMessageHandler(e)}  type="text" placeholder="Type a message"/>
+                                <Col xs={10}>
+                                    <Form.Control value={this.state.pendingMessage}
+                                                  onChange={(e) => this.onChangeMessageHandler(e)} type="text"
+                                                  placeholder="Schreibe eine Nachricht..."/>
                                 </Col>
-                                <Col xs={3}>
-                                    <button className="btn btn-primary" onClick={(e) => this.submitMessage(e)} >
-                                        Send
+                                <Col xs={2} className={"d-flex align-items-center "}>
+                                    <button onClick={(e) => this.submitMessage(e)}>
+                                        <div className="d-flex justify-content-end">
+                                            <img
+                                                src={sendbutton} width={"20"} height={"20"} alt={"senden"}
+                                            />
+                                        </div>
                                     </button>
                                 </Col>
                             </Row>
                         </Form>
                     </Container>
-                </Navbar>
-            </>
+                </footer>
+
+
+            </CustomerLayout>
         );
     }
 }

@@ -3,7 +3,7 @@ import Toast from "react-bootstrap/Toast";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import './chatMessage.css'
+import './chatMessage.scss'
 
 const OtherChatMessage = (props) => {
     return (

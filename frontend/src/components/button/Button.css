@@ -1,7 +1,7 @@
 .button {
     color: var(--color-font-light);
     border: none;
-    padding: 1.2rem 0;
+    padding: 1.2rem 1rem;
     border-radius: 20px;
     font-weight: bold;
     margin-bottom: 12px;
