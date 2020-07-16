@@ -1,0 +1,108 @@
+div.MuiPaper-root  {
+    border: 0.7rem  solid;
+    border-color: transparent;
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 1.2rem 1.2rem 0 1.2rem;
+}
+footer.fab {
+    margin-bottom: 4.5rem;
+    margin-left: 80%;
+}
+
+div.sheet > button {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 0.5rem;
+}
+
+div.errorMessage {
+    margin-left: 1.2rem;
+    color: #dc3545;
+}
+
+div.centerRow {
+    align-items: center;
+}
+
+hr.MuiDivider-root {
+    background-color: black;
+    margin: 0 0 0.5em 0;
+}
+
+.fab.MuiFab-root {
+    background-color: white;
+}
+.fab.MuiFab-label {
+    background-color: black;
+}
+
+div.item, div.setMargin {
+    display: flex;
+    list-style: none;
+    border: 1px solid #000;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 50px;
+}
+ div.unsetMargin {
+    display: flex;
+    list-style: none;
+    border: 1px solid #000;
+    margin-bottom: unset;
+    padding: 0.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 50px;
+}
+
+div.item > label {
+    margin-left: 1.2rem;
+}
+
+div.item > input {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    margin: -1px 0 -1px 5px;
+    width: 100%;
+}
+
+div.item > input:focus {
+    outline: none;
+    border-bottom: 1px solid #000;;
+}
+div.item > textarea {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    margin: -1px 0 -1px 5px;
+    width: 100%;
+    outline: none;
+
+
+
+}div.item > textarea:focus {
+     outline: none;
+     -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+     box-shadow: none;
+ }
+
+select.select-category {
+    color: black;
+    border: none;
+    width: 100%
+}
+
+div.select-category:focus {
+    outline: none;
+    border-bottom: 1px solid #000;
+}
+
+footer.fab.MuiTouchRipple-rippleVisible {
+    background-color: green;
+}

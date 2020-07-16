@@ -83,6 +83,7 @@ class SuppliersList extends Component {
                     }}
                 >
                     <Supplier
+                        pic={gastry}
                         key={supplier._id}
                         name={supplier.name}
                         address={supplier.address.street}
