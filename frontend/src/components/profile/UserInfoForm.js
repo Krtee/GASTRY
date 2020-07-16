@@ -1,7 +1,7 @@
 import React from "react";
 
-import Input from "../auth/Input"
-import Button from "../button/Button"
+import Input from "../auth/Input";
+import Button from "../button/Button";
 import "./UserInfo.css";
 
 const UserInfoForm = (props) => {
@@ -57,21 +57,23 @@ const UserInfoForm = (props) => {
                 </li>
                 {form.category ? (
                     <li className="item">
-                        Tag:
-                        <select
-                            className="select-category"
-                            defaultValue={form.category}
-                            onChange={(e) => props.onChangeOffer(e)}
-                        >
-                            <option value="food">Food</option>
-                            <option value="drinks">Drinks</option>
-                            <option value="both">Both</option>
-                            <option></option>
-                        </select>
+                        <label className="form-category-label">
+                            <select
+                                className="select-category"
+                                defaultValue={form.category}
+                                onChange={(e) => props.onChangeOffer(e)}
+                            >
+                                <option value="0" disabled>Produktangebot</option>
+                                <option value="food">Food</option>
+                                <option value="drinks">Drinks</option>
+                                <option value="both">Both</option>
+                                <option></option>
+                            </select>
+                        </label>
                     </li>
                 ) : null}
             </ul>
-            <Button className="button submit-btn" type="submit" label="Save"/>
+            <Button className="button submit-btn" type="submit" label="Save" />
         </form>
     );
 };

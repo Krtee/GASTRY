@@ -49,7 +49,7 @@ const SupplierLayout = ({
                     <h3 className="page-title">{title}</h3>
                 </Row>
                 <Row className={"flex-grow-1"}>
-                    <div className={className}> {children} </div>
+                    {children}
                 </Row>
             </Container>
         </>

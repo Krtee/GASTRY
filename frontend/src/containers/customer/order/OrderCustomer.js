@@ -43,7 +43,7 @@ class OrderCustomer extends Component {
         return (
             <CustomerLayout
                 className='container-fluid'
-                description='Was möchtest \n du bestellen ?'
+                title={`Was möchtest \n du bestellen?`}
                 location={"home"}
             >
                 <Row style={{width: "100%", height: "50%",marginTop:"5vh"}}>
