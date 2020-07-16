@@ -11,18 +11,18 @@ userRouter.get('/checkToken', checkAuth, new UserController(userModel).checkToke
 
 
 //get orderlist
-userRouter.get('/order/', checkAuth, new OrderController(ordermodel).fetchOrders);
+userRouter.get('/home/', checkAuth, new OrderController(ordermodel).fetchOrders);
 
 
 //get specific Order
-userRouter.get('/order/:_id', checkAuth, new OrderController(ordermodel).getOrder);
+userRouter.get('/home/:_id', checkAuth, new OrderController(ordermodel).getOrder);
 
 
 // UPDATE a user
 userRouter.patch('/:_id', checkAuth, new UserController(userModel).updateUser);
 
 //delete Order
-userRouter.post('/order/delete/:_id', checkAuth, new OrderController(ordermodel).deleteOrder);
+userRouter.post('/home/delete/:_id', checkAuth, new OrderController(ordermodel).deleteOrder);
 
 userRouter.get('/:_id', checkAuth, new UserController(userModel).getUser);
 

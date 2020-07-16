@@ -25,7 +25,7 @@ supplierRouter.get('/:_id', checkAuth, SupplierController.getUser);
 // UPDATE a customer
 supplierRouter.patch('/:_id', checkAuth, SupplierController.updateUser);
 
-supplierRouter.patch('/order/:_id',checkAuth,new OrderController(ordermodel).modifyOrder)
+supplierRouter.patch('/home/:_id',checkAuth,new OrderController(ordermodel).modifyOrder)
 
 // POST a new customer
 

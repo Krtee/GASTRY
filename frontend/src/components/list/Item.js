@@ -10,20 +10,20 @@ const Item = (props) => {
     }
     return (
         <Row style={{height: '100%'}} className="align-items-center">
-            <Col xs={5}>
+            <Col xs={6}>
                 <p style={pStyle}>
                     {props.name}
                 </p>
 
             </Col>
-            <Col xs={4}>
+            <Col xs={3}>
                 <p style={pStyle}>
                     {props.size}
                 </p>
             </Col>
             <Col xs={3}>
                 <p style={pStyle}>
-                    {props.price}
+                    {props.price}  €
                 </p>
             </Col>
 

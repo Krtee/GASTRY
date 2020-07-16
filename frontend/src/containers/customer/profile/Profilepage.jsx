@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import CustomerLayout from "../CustomerLayout";
 import SupplierLayout from "../../supplier/supplierLayout/SupplierLayout";
 import * as actions from "../../../redux/actions";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import UserInfo from "../../../components/profile/UserInfo";
 import UserInfoForm from "../../../components/profile/UserInfoForm";
 import Container from "react-bootstrap/Container";
+import {Fade} from "@material-ui/core";
 
 class Profilepage extends Component {
     state = {
@@ -22,9 +23,9 @@ class Profilepage extends Component {
     };
 
     userInfo = () => {
-        const { user } = this.props.user;
+        const {user} = this.props.user;
         if (user) {
-            return <UserInfo user={user} onEdit={this.onEdit} onLogout={this.props.onClicklogout} />;
+            return <UserInfo user={user} onEdit={this.onEdit} onLogout={this.props.onClicklogout}/>;
         }
     };
 
@@ -46,7 +47,7 @@ class Profilepage extends Component {
             [e.target.name]: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
         };
 
-        this.setState({ form: form });
+        this.setState({form: form});
     };
 
 
@@ -59,7 +60,7 @@ class Profilepage extends Component {
             },
         };
 
-        this.setState({ form: form });
+        this.setState({form: form});
     };
 
     getOffer = (event) => {
@@ -89,10 +90,10 @@ class Profilepage extends Component {
 
     onEdit = () => {
         this.props.fetchUser(this.props.userId, this.props.user.user.userType);
-        const { user } = this.props.user;
+        const {user} = this.props.user;
         let form;
-        if(user.userType === "Supplier"){
-             form = {
+        if (user.userType === "Supplier") {
+            form = {
                 ...this.state.form,
                 company: user.company,
                 category: user.category,
@@ -104,8 +105,7 @@ class Profilepage extends Component {
                     code: user.address.code,
                 },
             };
-        }
-        else {
+        } else {
             form = {
                 ...this.state.form,
                 company: user.company,
@@ -119,7 +119,7 @@ class Profilepage extends Component {
             };
         }
 
-        this.setState({ form: form, canEdit: true });
+        this.setState({form: form, canEdit: true});
     };
 
     onSubmit = (e) => {
@@ -129,7 +129,7 @@ class Profilepage extends Component {
             console.log(form)
             this.props.updateUser(this.props.userId, form);
             this.props.fetchUser(this.props.userId, this.props.user.user.userType);
-            this.setState({ canEdit: false });
+            this.setState({canEdit: false});
         } catch (err) {
             console.log(err);
         }
@@ -148,9 +148,11 @@ class Profilepage extends Component {
                 description="Update Profile"
                 location={"profile"}
             >
-                <Container>
-                    {this.state.canEdit ? this.userInfoForm() : this.userInfo()}
-                </Container>
+                <Fade in={true}>
+                    <Container>
+                        {this.state.canEdit ? this.userInfoForm() : this.userInfo()}
+                    </Container>
+                </Fade>
             </CustomerLayout>
             :
             <SupplierLayout
@@ -163,7 +165,7 @@ class Profilepage extends Component {
                     {this.state.canEdit ? this.userInfoForm() : this.userInfo()}
                 </Container>
             </SupplierLayout>
-        
+
     }
 }
 

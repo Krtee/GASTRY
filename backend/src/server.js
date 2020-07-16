@@ -86,7 +86,7 @@ io.on('connection', (socket) => {
 
         const message = {
             message: data.message,
-            date: new Date(Date.now()).toLocaleTimeString(),
+            date: new Date(Date.now()),
             user: data.userId
         };
         io.to(socket.chatId).emit("newMessage", {

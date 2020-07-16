@@ -50,7 +50,7 @@ class OrderController {
             let orderId = new ObjectId()
             console.log(orderId)
 
-            /* create chat object and reference to it in the order item*/
+            /* create chat object and reference to it in the home item*/
 
             const chatItem = {
                 _id: orderId

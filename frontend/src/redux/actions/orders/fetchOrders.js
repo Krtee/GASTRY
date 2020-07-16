@@ -18,7 +18,7 @@ export const fetchOrders = (payload) => async (dispatch) => {
     };
 
     try {
-        const response = await axios.get("/user/order/",config);
+        const response = await axios.get("/user/home/",config);
         dispatch(fetchOrdersSuccess(response.data.data));
     } catch (err) {
         dispatch(fetchOrdersFailed(err));

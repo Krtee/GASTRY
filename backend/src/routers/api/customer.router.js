@@ -26,8 +26,8 @@ customerRouter.post("/login",  CustomerController.login);
 //Delete all customers
 customerRouter.delete('/', CustomerController.deleteAll);
 
-//place order
-customerRouter.post('/order/addOrder', checkAuth, new OrderController(ordermodel).addOrder);
+//place home
+customerRouter.post('/home/addOrder', checkAuth, new OrderController(ordermodel).addOrder);
 
 // GER a customer
 customerRouter.get('/:_id', checkAuth, CustomerController.getUser);

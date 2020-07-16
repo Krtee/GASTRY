@@ -3,7 +3,7 @@ import React from "react";
 import {shallow} from 'enzyme';
 import {findByTestAtrr, testStore} from "../../../../Utils";
 import Input from "../../../components/auth/Input";
-import OrderCustomer from "../../customer/order/OrderCustomer";
+import OrderCustomer from "../../customer/home/HomeCustomer";
 import UserLayout from "../../customer/CustomerLayout";
 
 

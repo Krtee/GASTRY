@@ -14,7 +14,7 @@ export const placeOrder = (payload) => async (dispatch) => {
             'Content-Type': 'application/json',
             'Authorization': payload.token
         }
-        const response = await axios.post("/customer/order/addOrder",payload.data,{headers: headers})
+        const response = await axios.post("/customer/home/addOrder",payload.data,{headers: headers})
             .then((response)=>{
                 dispatch(placeOrderSuccess(response.data.data));
             })

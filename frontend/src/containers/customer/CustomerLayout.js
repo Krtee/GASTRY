@@ -12,7 +12,7 @@ import orderButtonInactive from "../../assets/icons/Bestelleingang.svg";
 import orderButtonActive from "../../assets/icons/BestelleingangAusgewählt.svg";
 import profileButtonInactive from "../../assets/icons/ProfilButton.svg";
 import profileButtonActive from "../../assets/icons/ProfilButtonAusgewählt.svg";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 
 const CustomerLayout = ({
@@ -22,25 +22,25 @@ const CustomerLayout = ({
                             className,
                             children,
                             basketState,
-                            showBack= false,
-                            location= ""
+                            showBack = false,
+                            location = ""
 
                         }) => {
-    let history = useHistory();
+        let history = useHistory();
 
-    const bottomButtons = [
+        const bottomButtons = [
             {
-                picref: (location==="home" ? homebuttonActive : homeButtonInactive),
+                picref: (location === "home" ? homebuttonActive : homeButtonInactive),
                 name: 'Home',
                 link: '/home'
             },
             {
-                picref: (location==="orders" ? orderButtonActive : orderButtonInactive),
+                picref: (location === "orders" ? orderButtonActive : orderButtonInactive),
                 name: 'Bestellungen',
                 link: '/orders'
             },
             {
-                picref: (location==="profile" ? profileButtonActive : profileButtonInactive),
+                picref: (location === "profile" ? profileButtonActive : profileButtonInactive),
                 name: 'Profil',
                 link: '/profile'
             },
@@ -49,17 +49,20 @@ const CustomerLayout = ({
 
         return (
             <>
-                <Topbar backButton={() => history.goBack()} showBack={showBack} showBasket={showBasket} basketState={basketState}/>
-                <NavigationBottom pagelist={bottomButtons} />
-                <Container fluid className={"h-100  d-flex flex-column"} style={{minHeight:"100vh",padding: "0px"}}>
-                    <Row>
-                        <Container fluid style={{marginTop: "25%"}}>
+                <Topbar backButton={() => history.goBack()} showBack={showBack} showBasket={showBasket}
+                        basketState={basketState}/>
+                <NavigationBottom pagelist={bottomButtons}/>
+                <Container fluid className={"h-100  d-flex flex-column"} style={{minHeight: "100vh", padding: "0px"}}>
+                    <Row style={{marginTop: "20%"}}>
+                        {description !== "" &&
+                        <Container fluid >
                             {description.split("\n").map((item, key) => {
                                 return <p className='lead text-center' key={key}> {item}</p>
                             })}
                         </Container>
+                        }
                     </Row>
-                    <Row className={"flex-grow-1"} >
+                    <Row className={"flex-grow-1 content"} >
                         {children}
                     </Row>
                 </Container>

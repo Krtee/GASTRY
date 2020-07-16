@@ -1,0 +1,15 @@
+div.order-list {
+    color: var(--color-font-dark);
+    img{
+        margin-left: 1rem;
+        transform: rotate(20deg);
+    }
+    border-style: none;
+    -webkit-box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+    -moz-box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+    box-shadow: 2px 5px 5px -1px rgba(176,176,176,1);
+}
+
+.orderNr {
+    font-weight: 300;
+}

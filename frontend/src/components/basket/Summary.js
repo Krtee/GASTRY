@@ -21,8 +21,8 @@ export const Summary = (props) => {
                             ></Item>
 
                         </Col>
-                        <Col xs={3}>
-                            <p>{item.amount}x</p>
+                        <Col xs={3} className={"align-items-center row"}>
+                            <p style={{margin:"0px"}}>{item.amount}x</p>
                         </Col>
                     </Row>
                 </Card.Header>

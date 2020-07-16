@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Login from "./containers/common/login/Login";
 import { Switch, Route, withRouter} from 'react-router-dom';
-import OrderCustomer from "./containers/customer/order/OrderCustomer";
+import OrderCustomer from "./containers/customer/home/HomeCustomer";
 import Notfound from "./containers/common/error/Notfound";
 import Profilepage from "./containers/customer/profile/Profilepage";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +13,7 @@ import HomeSupplier from "./containers/supplier/home/HomeSupplier";
 import CatalogCustomer from "./containers/customer/catalogCustomer/CatalogCustomer"
 import * as actions from "./redux/actions";
 import Basket from "./containers/customer/basket/Basket";
-import SuppliersList from "./containers/customer/order/SuppliersList";
+import SuppliersList from "./containers/customer/home/SuppliersList";
 import Orderlist from "./containers/common/orderList/Orderlist";
 import Chat from "./containers/customer/chat/Chat";
 import axiosInstance from "./redux/axiosInstance";

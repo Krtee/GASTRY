@@ -7,24 +7,17 @@ import './chatMessage.scss'
 
 const OtherChatMessage = (props) => {
     return (
-        <Row className="messageBlock">
-            <Col xs={10}>
-                <Card>
-                    <Card.Body>
-                        <Card.Text className="blockquote mb-0">
-                            <p style={{fontSize:"14px"}}>
-                                {props.text}
-                            </p>
-                            <footer className={"blockquote-footer"}>
-                                {props.date}
-                            </footer>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
-            <Col sx={2}>
-            </Col>
-        </Row>
+        <div className="messageRow d-flex justify-content-end">
+            <div className={"messageframe"}>
+                <p style={{ fontSize: "14px"}}>
+                    {props.text}
+                </p>
+                <footer style={{fontSize: "10px"}}>
+                    <p>{props.date}</p>
+
+                </footer>
+            </div>
+        </div>
 
     );
 };

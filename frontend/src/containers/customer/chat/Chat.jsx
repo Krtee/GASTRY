@@ -211,9 +211,11 @@ class Chat extends Component {
         const messageUIElements = messages.map(message => {
             const date = new Date(message.date)
             date.toUTCString()
+            let datesplitted = date.toString().split(" ")
+            let formattedTime = datesplitted[4].substring(0,datesplitted.length -3)
             if (message.user === userId) {
-                return <OwnChatMessage text={message.message} date={date.toString()}/>
-            } else return <OtherChatMessage text={message.message} date={date.toString()}/>
+                return <OwnChatMessage text={message.message} date={formattedTime}/>
+            } else return <OtherChatMessage text={message.message} date={formattedTime}/>
 
 
         })
