@@ -9,8 +9,22 @@ class CustomerController extends UserController {
 
     getSuppliersList = async (req, res) => {
         try {
+            const category = req.params.category;
+            console.log(category)
             const suppliers = await SupplierModel.find({});
-            const suppliersInfo = suppliers.map((supplier) => {
+            const suppliersInfo = suppliers.filter((supplier) => {
+                if (category == "both"){
+                    return true;
+                }
+                else {
+                    if (supplier.category == "both") {
+                        return true
+                    }
+                    else {
+                        return supplier.category == category
+                    }
+                }
+            }).map((supplier) => {
                 return {
                     _id: supplier._id,
                     name: supplier.company,

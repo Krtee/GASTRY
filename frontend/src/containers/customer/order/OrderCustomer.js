@@ -33,7 +33,9 @@ class OrderCustomer extends Component {
         await this.props.fetchSupplier(payload);
         console.log(this.props.suppliers)
         if (this.props.suppliers != null) {
-            this.props.history.replace('/home/suppliers')
+            this.props.history.replace('/home/suppliers', {
+                category: id
+            })
         }
     };
 
@@ -64,7 +66,7 @@ class OrderCustomer extends Component {
                 </Row>
                 <Row style={{width: "100%", height: "50%",marginBottom:"10vh"}}>
                     <Col className={"d-flex flex-column justify-content-center "} style={{height: "100%"}}>
-                        <button type={"button"} onClick={(e) => this.onSubmit(e, "foodandDrinks")}>
+                        <button type={"button"} onClick={(e) => this.onSubmit(e, "both")}>
                             <img
                                 src={foodanddrinks} width="150" height="150" alt={"foodAndDrinks"}
                                 className={"align-self-center"}

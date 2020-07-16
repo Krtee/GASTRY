@@ -11,7 +11,7 @@ import produktKatalogInactive from "../../../assets/icons/productcatalog.svg";
 import bestelleingangInactive from "../../../assets/icons/Bestelleingang.svg";
 
 import profileActive from "../../../assets/icons/ProfilButtonAusgewählt.svg";
-import produktKatalogActive from "../../../assets/icons/productcatalogAusgewählt.svg";
+import produktKatalogActive from "../../../assets/icons/productcatalogAusgewählt.svg";
 import bestelleingangActive from "../../../assets/icons/BestelleingangAusgewählt.svg";
 
 import "./SupplierLayout.css";

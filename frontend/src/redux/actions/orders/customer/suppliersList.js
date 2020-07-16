@@ -5,11 +5,12 @@ import {
 } from "../../actionTypes";
 import { axiosInstance as axios } from "../../../axiosInstance";
 
-export const fetchSuppliersList = () => async (dispatch) => {
+export const fetchSuppliersList = (payload) => async (dispatch) => {
     dispatch(fetchSuppliersListStart);
 
     try {
-        const response = await axios.get("/customer/suppliersList");
+        const category = payload.data.category;
+        const response = await axios.get("/customer/suppliersList/" + category);
         dispatch(fetchSuppliersListSuccess(response.data.data));
     } catch (err) {
         dispatch(fetchSuppliersListFailed(err));

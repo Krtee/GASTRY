@@ -13,7 +13,7 @@ customerRouter.post('/register', CustomerController.register);
 
 
 // GET
-customerRouter.get('/suppliersList', CustomerController.getSuppliersList)
+customerRouter.get('/suppliersList/:category', CustomerController.getSuppliersList)
 
 // UDPATE a customer
 customerRouter.patch('/:_id', checkAuth, CustomerController.updateUser);
