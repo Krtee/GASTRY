@@ -8,7 +8,7 @@ import {Badge} from "@material-ui/core";
 
 const OrderListItem = ({name, orderNr, logo, status,newMessages}) => {
     return (
-        <Badge badgeContent={newMessages} color={"secondary"} style={{width: "100%"}}>
+        <Badge badgeContent={newMessages} color={"secondary"} style={{width: "100%",margin:"0rem -1rem"}}>
             <Card className={"supplier-card order-list " + status}>
                 <Card.Body>
                     <Row className="align-items-center">

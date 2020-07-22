@@ -10,6 +10,8 @@ import gastry from "../../../assets/icons/logo.svg"
 import {SwipeableList, SwipeableListItem} from "@sandstreamdev/react-swipeable-list";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
+import {Badge} from "@material-ui/core";
+import "./Orderlist.scss";
 
 class Orderlist extends Component {
     componentDidMount() {
@@ -17,13 +19,22 @@ class Orderlist extends Component {
             token: this.props.token,
         };
         this.props.fetchOrders(payload);
-        for (let order of this.props.orders) {
-            let notificationpayload = {
-                token: this.props.token,
-                chatId: order._id
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if ((prevProps.orders !== this.props.orders) && (this.props.orders.length !== 0) && (prevProps.orders.length !== this.props.orders.length)) {
+            for (let order of this.props.orders) {
+                let notificationpayload = {
+                    token: this.props.token,
+                    chatId: order._id
+                }
+                this.props.fetchNotifications(notificationpayload)
             }
-            this.props.fetchNotifications(notificationpayload)
         }
+    }
+
+    componentWillUnmount() {
+        this.props.flush()
     }
 
     changeStatus = (e, id) => {
@@ -68,60 +79,69 @@ class Orderlist extends Component {
                         newMessages={item.newMessages}
                     />
                 ) : (
-                    <SwipeableListItem
-                        swipeLeft={{
-                            content:
-                                <Container style={{paddingRight: "0"}}>
-                                    <Card style={{backgroundColor: "#ff8282", padding: "0.35rem 0.8rem"}}>
-                                        <Card.Header style={{backgroundColor: "transparent", border: "none",color:"white"}}>
-                                            <Row className={"d-flex justify-content-end"}>
-                                                <p style={{marginBottom: "0"}}>Bestellung</p>
-                                            </Row>
-                                            <Row className={"d-flex justify-content-end"}>
-                                                <p style={{marginBottom: "0"}}>stornieren</p>
-                                            </Row>
-                                        </Card.Header>
-                                    </Card>
-                                </Container>,
-                            action: () => this.changeStatus(-1, item._id)
-                        }}
-                        swipeRight={{
-                            content:
-                                <Container style={{paddingLeft: "0"}}>
-                                    <Card style={{backgroundColor: "#9CBB49", padding: "0.35rem 0.8rem"}}>
-                                        <Card.Header style={{backgroundColor: "transparent", border: "none",color:"white"}}>
-                                            <Row className={"d-flex justify-content-start"}>
-                                                <p style={{marginBottom: "0"}}>Bestellung</p>
-                                            </Row>
-                                            <Row className={"d-flex justify-content-start"}>
-                                                <p style={{marginBottom: "0"}}>abschließen</p>
-                                            </Row>
-                                        </Card.Header>
-                                    </Card>
-                                </Container>,
-                            action: () => this.changeStatus(1, item._id)
-                        }}>
-                        <OrderListItem
-                            logo={gastry}
-                            name={item.customer_id.company}
-                            orderNr={item._id}
-                            status={item.status}
-                            newMessages={item.hasOwnProperty('newMessages') ? item.newMessages: 0}
-                        />
-                    </SwipeableListItem>
+                        <SwipeableListItem
+                            threshold={0.5}
+                            swipeLeft={{
+                                content:
+                                    <Container style={{paddingRight: "0"}}>
+                                        <Card style={{backgroundColor: "#ff8282", padding: "0.35rem 0.8rem"}}>
+                                            <Card.Header style={{
+                                                backgroundColor: "transparent",
+                                                border: "none",
+                                                color: "white"
+                                            }}>
+                                                <Row className={"d-flex justify-content-end"}>
+                                                    <p style={{marginBottom: "0"}}>Bestellung</p>
+                                                </Row>
+                                                <Row className={"d-flex justify-content-end"}>
+                                                    <p style={{marginBottom: "0"}}>stornieren</p>
+                                                </Row>
+                                            </Card.Header>
+                                        </Card>
+                                    </Container>,
+                                action: () => this.changeStatus(-1, item._id)
+                            }}
+                            swipeRight={{
+                                content:
+                                    <Container style={{paddingLeft: "0"}}>
+                                        <Card style={{backgroundColor: "#9CBB49", padding: "0.35rem 0.8rem"}}>
+                                            <Card.Header style={{
+                                                backgroundColor: "transparent",
+                                                border: "none",
+                                                color: "white"
+                                            }}>
+                                                <Row className={"d-flex justify-content-start"}>
+                                                    <p style={{marginBottom: "0"}}>Bestellung</p>
+                                                </Row>
+                                                <Row className={"d-flex justify-content-start"}>
+                                                    <p style={{marginBottom: "0"}}>abschließen</p>
+                                                </Row>
+                                            </Card.Header>
+                                        </Card>
+                                    </Container>,
+                                action: () => this.changeStatus(1, item._id)
+                            }}>
+                            <OrderListItem
+                                logo={gastry}
+                                name={item.customer_id.company}
+                                orderNr={item._id}
+                                status={item.status}
+                                newMessages={item.hasOwnProperty('newMessages') ? item.newMessages : 0}
+                            />
+                        </SwipeableListItem>
                 )}
-            </Link>        ));
+            </Link>));
         return this.props.userType === "supplier" ? (
             <SupplierLayout title="Orders" location={"orders"} description={"Bestelleingänge"}>
-                <Container fluid>
-                    <SwipeableList>
+                <Container fluid className={"orderlist d-flex justify-content-center"}>
+                    <SwipeableList >
                         {orders}
                     </SwipeableList>
                 </Container>
             </SupplierLayout>
         ) : (
             <CustomerLayout title="Orders" location={"orders"} description={"Meine \n Bestellungen"}>
-                <Container fluid>{orders}</Container>
+                <Container fluid className={"orderlist"}>{orders}</Container>
             </CustomerLayout>
         );
     }
